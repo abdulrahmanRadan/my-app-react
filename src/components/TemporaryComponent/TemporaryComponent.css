@@ -1,0 +1,45 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  /* position: relative; */
+}
+.loading::before,
+.loading::after {
+  content: "";
+  background-color: blue;
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+}
+
+.loading::after {
+  background-color: red;
+  transform: scale(0);
+  inset: 6px;
+  --animation-delay: 500 ms;
+}
+
+.loading::before {
+  --animation-delay: 0ms;
+}
+
+.loading::before,
+.loading::after {
+  animation: scale 1s infinite;
+  animation-delay: var(--animation-delay);
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
